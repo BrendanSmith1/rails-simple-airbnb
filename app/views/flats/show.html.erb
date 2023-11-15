@@ -1,0 +1,24 @@
+<h1>Show Page</h1>
+
+
+<h5 class="card-title"><%= @flat.name %></h5>
+<p class="card-text"><%= @flat.address %></p>
+<p class="card-text"><i class="fa-solid fa-sterling-sign"></i> <%= @flat.price_per_night %></p>
+<p> <i class="fa-solid fa-people-group"></i> <%= @flat.number_of_guests %></p>
+
+<h2>About more about this flat:</h2>
+<p><%= @flat.description %></p>
+
+<%= form_with model: @flat do |f| %>
+  <%= f.label :from %>
+  <%= f.date_field :from %>
+  <%= f.label :to %>
+  <%= f.date_field :to %>
+  <%= f.submit %>
+<% end %>
+
+<%= link_to "Edit this Flat", edit_flat_path %>
+<%= link_to "Back to All Flats", flats_path %>
+<%= link_to "Delete", flat_path(@flat),
+  data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+%>
